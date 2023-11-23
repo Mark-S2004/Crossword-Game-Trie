@@ -1,5 +1,21 @@
 #include "trie.hpp"
 
+Trie::Trie(){
+root=new Node();
+}
+
+void Trie::insert(const string word) {
+   Trie::nodePointer current = root;
+    for (char c : word) {
+        int i = c - 'a';
+        if (current->children[i] == nullptr) {
+            current->children[i] = new Node();
+        }
+        current = current->children[i];
+    }
+    current->isEndofWord = true;
+}
+
 bool Trie::search(const string word)
 {
     nodePointer ptr = root;
