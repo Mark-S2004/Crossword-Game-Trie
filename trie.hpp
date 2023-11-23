@@ -31,5 +31,5 @@ private:
 
     typedef Node *nodePointer;
 
-    nodePointer myRoot;
+    nodePointer root;
 };
