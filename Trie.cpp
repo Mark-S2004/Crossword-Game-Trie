@@ -10,6 +10,10 @@ Trie::~Trie()
     deleteTrie(root);
 }
 
+  bool Trie:: empty() {
+        return root == nullptr;
+    }
+
 void Trie::deleteTrie(nodePointer node)
 {
     nodePointer childNode;
@@ -149,8 +153,15 @@ void Trie::display(ostream &out, nodePointer root, string str) const
     }
 }
 
-ostream &operator<<(ostream &out, const Trie &aTrie)
-{
+ostream &operator<<(ostream &out, const Trie &aTrie) {
     aTrie.displayReq(out);
     return out;
 }
+
+istream &operator>>(istream &in, Trie &trie) {
+        string word;
+        in >> word;
+        trie.insert(word);
+        return in;
+    }
+     

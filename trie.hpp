@@ -45,6 +45,8 @@ public:
 
     ~Trie();
 
+    bool empty();
+    
     void deleteTrie(nodePointer node);
 
     void copyConstructor(nodePointer thisPtr, nodePointer origPtr);
@@ -65,3 +67,4 @@ public:
 };
 
 ostream &operator<<(ostream &out, const Trie &aTrie);
+istream &operator>>(istream& in,const Trie &trie);
