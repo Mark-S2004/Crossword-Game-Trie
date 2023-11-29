@@ -44,7 +44,7 @@ void Trie::copyConstructor(nodePointer thisPtr, nodePointer origPtr)
     }
 }
 
-Trie::Trie(const Trie &origTrie) : root(0)
+Trie::Trie(const Trie &origTrie) : root(new Node())
 {
     copyConstructor(root, origTrie.root);
 }
