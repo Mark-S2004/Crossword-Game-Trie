@@ -54,6 +54,7 @@ const Trie &Trie::operator=(const Trie &rhs)
     if (this != &rhs)
     {
         this->~Trie();
+        root = new Node();
         copyConstructor(root, rhs.root);
     }
     return *this;
