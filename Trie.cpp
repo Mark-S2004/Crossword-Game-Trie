@@ -1,26 +1,35 @@
 #include "trie.hpp"
-using namespace std;
-Trie::Trie(){
-    root=new Node();
+
+Trie::Trie()
+{
+    root = new Node();
 }
-void Trie::copyConstructor(nodePointer thisPtr,nodePointer origPtr){
-     for(int i=0;i<alphabet_size;i++){
-        if(origPtr->children[i]){
-            thisPtr->children[i]=new Node(origPtr->children[i]->isEndofWord);
-            copyConstructor(thisPtr->children[i],origPtr->children[i]);
+
+void Trie::copyConstructor(nodePointer thisPtr, nodePointer origPtr)
+{
+    for (int i = 0; i < alphabet_size; i++)
+    {
+        if (origPtr->children[i])
+        {
+            thisPtr->children[i] = new Node(origPtr->children[i]->isEndofWord);
+            copyConstructor(thisPtr->children[i], origPtr->children[i]);
         }
     }
-
-}
-Trie::Trie(const Trie & origTrie):root(0){
-    copyConstructor(root,origTrie.root);
 }
 
-void Trie::insert(const string word) {
-   Trie::nodePointer current = root;
-    for (char c : word) {
+Trie::Trie(const Trie &origTrie) : root(0)
+{
+    copyConstructor(root, origTrie.root);
+}
+
+void Trie::insert(const string word)
+{
+    Trie::nodePointer current = root;
+    for (char c : word)
+    {
         int i = c - 'a';
-        if (current->children[i] == nullptr) {
+        if (current->children[i] == nullptr)
+        {
             current->children[i] = new Node();
         }
         current = current->children[i];
@@ -95,35 +104,41 @@ void Trie::deleteWord(const string word)
         deleteAllNodes(root, lastPrefixCharIndex, ptr, word);
 }
 
-void Trie::displayReq (ostream &out) const{
-    return display(out,root,"");
+void Trie::displayReq(ostream &out) const
+{
+    return display(out, root, "");
 }
 
-void Trie::display(ostream &out,nodePointer root,string str) const{
+void Trie::display(ostream &out, nodePointer root, string str) const
+{
 
-    if(root->isEndofWord){
+    if (root->isEndofWord)
+    {
         str += '\0';
         out << str << endl;
     }
-    for(int i = 0; i< alphabet_size ; i++){
-        if(root->children[i]){
-             str += i + 'a';
-            display(out, root->children[i],str);
+    for (int i = 0; i < alphabet_size; i++)
+    {
+        if (root->children[i])
+        {
+            str += i + 'a';
+            display(out, root->children[i], str);
         }
     }
-
-
 }
 
-ostream & operator<< (ostream & out, const Trie & aTrie)
+ostream &operator<<(ostream &out, const Trie &aTrie)
 {
     aTrie.displayReq(out);
     return out;
 }
 
-bool Trie::isleaf(nodePointer node) const{
-    for(auto node : node->children){
-        if(node) return false;
+bool Trie::isleaf(nodePointer node) const
+{
+    for (auto node : node->children)
+    {
+        if (node)
+            return false;
     }
     return true;
 }
