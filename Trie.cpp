@@ -10,9 +10,9 @@ Trie::~Trie()
     deleteTrie(root);
 }
 
-  bool Trie:: empty() {
-        return root == nullptr;
-    }
+bool Trie:: empty() const{
+  return root == nullptr;
+}
 
 void Trie::deleteTrie(nodePointer node)
 {

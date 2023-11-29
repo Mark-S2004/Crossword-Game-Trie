@@ -45,8 +45,8 @@ public:
 
     ~Trie();
 
-    bool empty();
-    
+    bool empty() const;
+
     void deleteTrie(nodePointer node);
 
     void copyConstructor(nodePointer thisPtr, nodePointer origPtr);
