@@ -48,6 +48,17 @@ Trie::Trie(const Trie &origTrie) : root(0)
     copyConstructor(root, origTrie.root);
 }
 
+const Trie &Trie::operator=(const Trie & rhs)
+{
+    if (this != &rhs){
+        this->~Trie();
+        copyConstructor(root , rhs.root);
+
+    }
+    return *this;
+
+}
+
 void Trie::insert(const string word)
 {
     Trie::nodePointer current = root;

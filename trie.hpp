@@ -51,6 +51,8 @@ public:
 
     void copyConstructor(nodePointer thisPtr, nodePointer origPtr);
 
+    const Trie & operator=(const Trie & rhs);
+
     Trie(const Trie &origTrie);
 
     void insert(const string word);
