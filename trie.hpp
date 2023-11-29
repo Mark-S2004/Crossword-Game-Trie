@@ -69,4 +69,4 @@ public:
 };
 
 ostream &operator<<(ostream &out, const Trie &aTrie);
-istream &operator>>(istream& in,const Trie &trie);
+istream &operator>>(istream &in, Trie &trie);
