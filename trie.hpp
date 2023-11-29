@@ -18,6 +18,12 @@ private:
                 children[i] = NULL;
             }
         }
+        Node(bool isEndofWord) : isEndofWord(isEndofWord){
+             for (int i = 0; i < alphabet_size; i++)
+            {
+                children[i] = NULL;
+            }
+        }
     };
 
     typedef Node *nodePointer;
@@ -26,6 +32,10 @@ private:
 
 public:
     Trie();
+
+    void copyConstructor(nodePointer thisPtr,nodePointer origPtr);
+
+    Trie(const Trie & origTrie);
 
     void insert(const string word);
 

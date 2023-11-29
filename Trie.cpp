@@ -3,6 +3,18 @@ using namespace std;
 Trie::Trie(){
     root=new Node();
 }
+void Trie::copyConstructor(nodePointer thisPtr,nodePointer origPtr){
+     for(int i=0;i<alphabet_size;i++){
+        if(origPtr->children[i]){
+            thisPtr->children[i]=new Node(origPtr->children[i]->isEndofWord);
+            copyConstructor(thisPtr->children[i],origPtr->children[i]);
+        }
+    }
+
+}
+Trie::Trie(const Trie & origTrie):root(0){
+    copyConstructor(root,origTrie.root);
+}
 
 void Trie::insert(const string word) {
    Trie::nodePointer current = root;
@@ -88,6 +100,7 @@ void Trie::displayReq (ostream &out) const{
 }
 
 void Trie::display(ostream &out,nodePointer root,string str) const{
+
     if(root->isEndofWord){
         str += '\0';
         out << str << endl;
