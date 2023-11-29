@@ -146,20 +146,22 @@ void Trie::displayReq(ostream &out) const
     return display(out, root, "");
 }
 
-void Trie::display(ostream &out, nodePointer root, string str) const
+void Trie::display(ostream &out, nodePointer node, string str) const
 {
-
-    if (root->isEndofWord)
+    string str2;
+    if (node->isEndofWord)
     {
         str += '\0';
         out << str << endl;
     }
     for (int i = 0; i < alphabet_size; i++)
     {
-        if (root->children[i])
+        if(node==root) str="";
+        if (node->children[i])
         {
-            str += i + 'a';
-            display(out, root->children[i], str);
+            str2=str;
+            str2 += i + 'a';
+            display(out, node->children[i], str2);
         }
     }
 }
