@@ -47,4 +47,8 @@ int main()
     cout << trie1;
     cout << "trie3:\n";
     cout << trie3;
+
+    cout << "\n*** Testing assigment operator with trie1 and trie2\n";
+    trie2 = trie1;
+    cout << trie2;
 }
