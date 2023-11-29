@@ -18,7 +18,7 @@ int main()
     trie1.insert("alert");
 
     cout << "\n*** enter a value to be stored in trie1\n";
-    // cin >> trie1;
+    cin >> trie1;
 
     cout << "\n*** Print the Trie Trie1 using the print - Display Functions\n";
     cout << trie1;
