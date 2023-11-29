@@ -132,13 +132,3 @@ ostream &operator<<(ostream &out, const Trie &aTrie)
     aTrie.displayReq(out);
     return out;
 }
-
-bool Trie::isleaf(nodePointer node) const
-{
-    for (auto node : node->children)
-    {
-        if (node)
-            return false;
-    }
-    return true;
-}

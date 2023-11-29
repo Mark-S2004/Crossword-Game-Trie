@@ -18,11 +18,21 @@ private:
                 children[i] = NULL;
             }
         }
-        Node(bool isEndofWord) : isEndofWord(isEndofWord){
-             for (int i = 0; i < alphabet_size; i++)
+        Node(bool isEndofWord) : isEndofWord(isEndofWord)
+        {
+            for (int i = 0; i < alphabet_size; i++)
             {
                 children[i] = NULL;
             }
+        }
+        bool isLeaf() const
+        {
+            for (auto node : children)
+            {
+                if (node)
+                    return false;
+            }
+            return true;
         }
     };
 
@@ -33,9 +43,9 @@ private:
 public:
     Trie();
 
-    void copyConstructor(nodePointer thisPtr,nodePointer origPtr);
+    void copyConstructor(nodePointer thisPtr, nodePointer origPtr);
 
-    Trie(const Trie & origTrie);
+    Trie(const Trie &origTrie);
 
     void insert(const string word);
 
@@ -45,11 +55,9 @@ public:
 
     void deleteAllNodes(nodePointer lastPrefixNode, short lastPrefixCharIndex, nodePointer lastNode, string word);
 
-    void displayReq (ostream &out) const;
+    void displayReq(ostream &out) const;
 
-    void display(ostream &out,nodePointer root,string str) const;
-
-    bool isleaf(nodePointer node)const;
+    void display(ostream &out, nodePointer root, string str) const;
 };
 
-ostream & operator<< (ostream & out, const Trie & aTrie);
+ostream &operator<<(ostream &out, const Trie &aTrie);
