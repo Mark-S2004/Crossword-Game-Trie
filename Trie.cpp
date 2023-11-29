@@ -10,8 +10,9 @@ Trie::~Trie()
     deleteTrie(root);
 }
 
-bool Trie:: empty() const{
-  return root == nullptr;
+bool Trie::empty() const
+{
+    return root->isLeaf();
 }
 
 void Trie::deleteTrie(nodePointer node)
@@ -48,15 +49,14 @@ Trie::Trie(const Trie &origTrie) : root(0)
     copyConstructor(root, origTrie.root);
 }
 
-const Trie &Trie::operator=(const Trie & rhs)
+const Trie &Trie::operator=(const Trie &rhs)
 {
-    if (this != &rhs){
+    if (this != &rhs)
+    {
         this->~Trie();
-        copyConstructor(root , rhs.root);
-
+        copyConstructor(root, rhs.root);
     }
     return *this;
-
 }
 
 void Trie::insert(const string word)
@@ -91,7 +91,8 @@ bool Trie::search(const string word)
 void Trie::deleteAllNodes(nodePointer lastPrefixNode, short lastPrefixCharIndex, nodePointer lastNode, string word)
 {
     nodePointer prevPtr = lastPrefixNode, ptr = lastPrefixNode->children[word[lastPrefixCharIndex] - 'a'];
-    if(lastNode ==lastPrefixNode) return;
+    if (lastNode == lastPrefixNode)
+        return;
     while (ptr != lastNode)
     {
         prevPtr = ptr;
@@ -157,25 +158,27 @@ void Trie::display(ostream &out, nodePointer node, string str) const
     }
     for (int i = 0; i < alphabet_size; i++)
     {
-        if(node==root) str="";
+        if (node == root)
+            str = "";
         if (node->children[i])
         {
-            str2=str;
+            str2 = str;
             str2 += i + 'a';
             display(out, node->children[i], str2);
         }
     }
 }
 
-ostream &operator<<(ostream &out, const Trie &aTrie) {
+ostream &operator<<(ostream &out, const Trie &aTrie)
+{
     aTrie.displayReq(out);
     return out;
 }
 
-istream &operator>>(istream &in, Trie &trie) {
-        string word;
-        in >> word;
-        trie.insert(word);
-        return in;
-    }
-     
+istream &operator>>(istream &in, Trie &trie)
+{
+    string word;
+    in >> word;
+    trie.insert(word);
+    return in;
+}
