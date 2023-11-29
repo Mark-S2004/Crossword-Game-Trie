@@ -91,6 +91,7 @@ bool Trie::search(const string word)
 void Trie::deleteAllNodes(nodePointer lastPrefixNode, short lastPrefixCharIndex, nodePointer lastNode, string word)
 {
     nodePointer prevPtr = lastPrefixNode, ptr = lastPrefixNode->children[word[lastPrefixCharIndex] - 'a'];
+    if(lastNode ==lastPrefixNode) return;
     while (ptr != lastNode)
     {
         prevPtr = ptr;
