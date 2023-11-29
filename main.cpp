@@ -40,4 +40,11 @@ int main()
     cout << "trie1: " << trie1.empty() << '\n';
     Trie trie2;
     cout << "trie2: " << trie2.empty() << '\n';
+
+    cout << "\n*** Testing copy constructor with trie1 and trie3\n";
+    Trie trie3 = trie1;
+    cout << "trie1:\n";
+    cout << trie1;
+    cout << "trie3:\n";
+    cout << trie3;
 }
