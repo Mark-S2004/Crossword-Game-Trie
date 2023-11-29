@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 using namespace std;
-
+#define alphabet_size 26
 class Trie
 {
 private:
@@ -9,11 +9,11 @@ private:
     {
     public:
         bool isEndofWord;
-        Node *children[26];
+        Node *children[alphabet_size];
 
         Node() : isEndofWord(false)
         {
-            for (int i = 0; i < 26; i++)
+            for (int i = 0; i < alphabet_size; i++)
             {
                 children[i] = NULL;
             }
@@ -34,4 +34,12 @@ public:
     void deleteWord(const string word);
 
     void deleteAllNodes(nodePointer lastPrefixNode, short lastPrefixCharIndex, nodePointer lastNode, string word);
+
+    void displayReq (ostream &out) const;
+
+    void display(ostream &out,nodePointer root,string str) const;
+
+    bool isleaf(nodePointer node)const;
 };
+
+ostream & operator<< (ostream & out, const Trie & aTrie);

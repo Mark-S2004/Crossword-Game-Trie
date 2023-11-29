@@ -1,7 +1,7 @@
 #include "trie.hpp"
-
+using namespace std;
 Trie::Trie(){
-root=new Node();
+    root=new Node();
 }
 
 void Trie::insert(const string word) {
@@ -54,7 +54,7 @@ void Trie::deleteWord(const string word)
         {
             return;
         }
-        for (i = 0; i < 26; i++)
+        for (i = 0; i < alphabet_size; i++)
             if (ptr->children[i])
                 count++;
         if (count > 1)
@@ -66,7 +66,7 @@ void Trie::deleteWord(const string word)
     }
 
     count = 0;
-    for (i = 0; i < 26; i++)
+    for (i = 0; i < alphabet_size; i++)
     {
         if (ptr->children[i])
         {
@@ -81,4 +81,36 @@ void Trie::deleteWord(const string word)
         deleteAllNodes(lastPrefixNode, lastPrefixCharIndex, ptr, word);
     else
         deleteAllNodes(root, lastPrefixCharIndex, ptr, word);
+}
+
+void Trie::displayReq (ostream &out) const{
+    return display(out,root,"");
+}
+
+void Trie::display(ostream &out,nodePointer root,string str) const{
+    if(root->isEndofWord){
+        str += '\0';
+        out << str << endl;
+    }
+    for(int i = 0; i< alphabet_size ; i++){
+        if(root->children[i]){
+             str += i + 'a';
+            display(out, root->children[i],str);
+        }
+    }
+
+
+}
+
+ostream & operator<< (ostream & out, const Trie & aTrie)
+{
+    aTrie.displayReq(out);
+    return out;
+}
+
+bool Trie::isleaf(nodePointer node) const{
+    for(auto node : node->children){
+        if(node) return false;
+    }
+    return true;
 }
