@@ -43,6 +43,10 @@ private:
 public:
     Trie();
 
+    ~Trie();
+
+    void deleteTrie(nodePointer node);
+
     void copyConstructor(nodePointer thisPtr, nodePointer origPtr);
 
     Trie(const Trie &origTrie);

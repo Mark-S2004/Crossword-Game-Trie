@@ -5,6 +5,28 @@ Trie::Trie()
     root = new Node();
 }
 
+Trie::~Trie()
+{
+    deleteTrie(root);
+}
+
+void Trie::deleteTrie(nodePointer node)
+{
+    nodePointer childNode;
+    for (int i = 0; i < alphabet_size; i++)
+    {
+        childNode = node->children[i];
+        if (childNode)
+        {
+            if (childNode->isLeaf())
+                delete childNode;
+            else
+                deleteTrie(childNode);
+        }
+    }
+    delete node;
+}
+
 void Trie::copyConstructor(nodePointer thisPtr, nodePointer origPtr)
 {
     for (int i = 0; i < alphabet_size; i++)
