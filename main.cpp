@@ -13,12 +13,13 @@ int main()
     trie1.insert("yehia");
     trie1.insert("yellow");
     trie1.insert("geno");
+    trie1.insert("gen");
     trie1.insert("mark");
     trie1.insert("albert");
     trie1.insert("alert");
 
     cout << "\n*** enter a value to be stored in trie1\n";
-    // cin >> trie1;
+    cin >> trie1;
 
     cout << "\n*** Print the Trie Trie1 using the print - Display Functions\n";
     cout << trie1;
@@ -30,7 +31,7 @@ int main()
     cout << "ahmed: " << trie1.search("ahmed") << endl;
     cout << "hussein: " << trie1.search("hussien") << endl;
 
-    cout << "\n*** Deleting values from the Trie Trie1 using the deleteWord method\n";
+    cout << "\n*** Deleting geno, alert, doll from the Trie Trie1 using the deleteWord method\n";
     trie1.deleteWord("geno");
     trie1.deleteWord("alert");
     trie1.deleteWord("doll");
