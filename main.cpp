@@ -13,6 +13,7 @@ int main()
     trie1.insert("yehia");
     trie1.insert("yellow");
     trie1.insert("geno");
+    trie1.insert("gen");
     trie1.insert("mark");
     trie1.insert("albert");
     trie1.insert("alert");
@@ -30,7 +31,7 @@ int main()
     cout << "ahmed: " << trie1.search("ahmed") << endl;
     cout << "hussein: " << trie1.search("hussien") << endl;
 
-    cout << "\n*** Deleting values from the Trie Trie1 using the deleteWord method\n";
+    cout << "\n*** Deleting geno, alert, doll from the Trie Trie1 using the deleteWord method\n";
     trie1.deleteWord("geno");
     trie1.deleteWord("alert");
     trie1.deleteWord("doll");
