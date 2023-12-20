@@ -1,5 +1,7 @@
 #include <iostream>
 #include "trie.hpp"
+#include <fstream>
+#include <string>
 using namespace std;
 int main()
 {
@@ -53,4 +55,19 @@ int main()
     cout << "\n*** Testing assigment operator with trie1 and trie2\n";
     trie2 = trie1;
     cout << trie2;
+
+
+    //reading from file
+  
+    Trie t1 = Trie();
+    string words;
+    fstream myfile;
+    myfile.open("words.txt");
+    while(!myfile.eof()){
+    getline(myfile, words, ' ');
+    t1.insert(words);
+    }
+    myfile.close();
+    cout << t1;
+
 }
