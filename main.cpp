@@ -57,15 +57,15 @@ int main()
     cout << trie2;
 
 
-    //reading from file
-  
-    Trie t1 = Trie();
-    string words;
+
+    cout << "\n*** Reading from file\n";
+    Trie t1;
+    string word;
     fstream myfile;
     myfile.open("words.txt");
     while(!myfile.eof()){
-    getline(myfile, words, ' ');
-    t1.insert(words);
+    getline(myfile, word);
+    t1.insert(word);
     }
     myfile.close();
     cout << t1;
