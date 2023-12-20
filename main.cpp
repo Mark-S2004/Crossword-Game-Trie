@@ -31,10 +31,11 @@ int main()
     cout << "ahmed: " << trie1.search("ahmed") << endl;
     cout << "hussein: " << trie1.search("hussien") << endl;
 
-    cout << "\n*** Deleting geno, alert, doll from the Trie Trie1 using the deleteWord method\n";
+    cout << "\n*** Deleting geno, alert, doll, GAN from the Trie Trie1 using the deleteWord method\n";
     trie1.deleteWord("geno");
     trie1.deleteWord("alert");
     trie1.deleteWord("doll");
+    trie1.deleteWord("GAN");
     cout << trie1;
 
     cout << "\n*** Testing empty method with trie1 and trie2\n";

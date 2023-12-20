@@ -1,4 +1,4 @@
-#include "trie.hpp"
+#include "Trie.hpp"
 
 Trie::Trie()
 {
@@ -65,7 +65,7 @@ void Trie::insert(const string word)
     Trie::nodePointer current = root;
     for (char c : word)
     {
-        int i = c - 'a';
+        int i = tolower(c) - 'a';
         if (current->children[i] == nullptr)
         {
             current->children[i] = new Node();
@@ -80,11 +80,11 @@ bool Trie::search(const string word)
     nodePointer ptr = root;
     for (char c : word)
     {
-        if (ptr->children[c - 'a'] == NULL)
+        if (ptr->children[tolower(c) - 'a'] == NULL)
         {
             return false;
         }
-        ptr = ptr->children[c - 'a'];
+        ptr = ptr->children[tolower(c) - 'a'];
     }
     return ptr->isEndofWord;
 }
@@ -105,8 +105,11 @@ void Trie::deleteAllNodes(nodePointer lastPrefixNode, short lastPrefixCharIndex,
     deleteAllNodes(lastPrefixNode, lastPrefixCharIndex, prevPtr, word);
 }
 
-void Trie::deleteWord(const string word)
+void Trie::deleteWord(string word)
 {
+    for(int k =0; k < word.length(); k++)
+        word[k]=tolower(word[k]);
+
     nodePointer ptr = root, lastPrefixNode = NULL;
     short i, j, count, lastPrefixCharIndex = (word[0] - 'a');
 

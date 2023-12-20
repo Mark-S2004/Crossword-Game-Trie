@@ -59,7 +59,7 @@ public:
 
     bool search(const string word);
 
-    void deleteWord(const string word);
+    void deleteWord(string word);
 
     void deleteAllNodes(nodePointer lastPrefixNode, short lastPrefixCharIndex, nodePointer lastNode, string word);
 
