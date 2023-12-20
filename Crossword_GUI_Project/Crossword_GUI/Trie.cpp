@@ -1,4 +1,4 @@
-#include "trie.hpp"
+#include "Trie.hpp"
 
 Trie::Trie()
 {
