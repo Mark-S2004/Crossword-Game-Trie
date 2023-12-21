@@ -21,7 +21,7 @@ int main()
     trie1.insert("alert");
 
     cout << "\n*** enter a value to be stored in trie1\n";
-    cin >> trie1;
+    // cin >> trie1;
 
     cout << "\n*** Print the Trie Trie1 using the print - Display Functions\n";
     cout << trie1;
@@ -56,18 +56,27 @@ int main()
     trie2 = trie1;
     cout << trie2;
 
-
-
     cout << "\n*** Reading from file\n";
     Trie t1;
     string word;
     fstream myfile;
     myfile.open("words.txt");
-    while(!myfile.eof()){
-    getline(myfile, word);
-    t1.insert(word);
+    while (!myfile.eof())
+    {
+        getline(myfile, word);
+        t1.insert(word);
     }
     myfile.close();
     cout << t1;
 
+    cout << "\n*** Testing crosswords board generator\n";
+    t1.toCrosswordsBoard();
+    for (int i = 0; i < t1.crosswordBoard.size(); ++i)
+    {
+        for (int j = 0; j < t1.crosswordBoard.size(); ++j)
+        {
+            cout << t1.crosswordBoard[i][j].first;
+        }
+        cout << endl;
+    }
 }
