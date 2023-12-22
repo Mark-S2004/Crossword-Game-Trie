@@ -6,9 +6,24 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    //Code to transition
+    gameWindow = new GameWindow(this);
+    // Connect the button's clicked signal to the slot function
+    connect(ui->switchGameButton, &QPushButton::clicked, this, &MainWindow::switchToGameWindow);
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::switchToGameWindow()
+{
+    gameWindow->show();  // Show the GameWindow
+    hide();             // Hide the MainWindow
+}
+
+
+

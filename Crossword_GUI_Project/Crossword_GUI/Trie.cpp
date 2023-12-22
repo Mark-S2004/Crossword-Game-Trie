@@ -1,4 +1,4 @@
-#include "Trie.hpp"
+#include "trie.hpp"
 
 Trie::Trie()
 {
@@ -107,8 +107,8 @@ void Trie::deleteAllNodes(nodePointer lastPrefixNode, short lastPrefixCharIndex,
 
 void Trie::deleteWord(string word)
 {
-    for(int k =0; k < word.length(); k++)
-        word[k]=tolower(word[k]);
+    for (int k = 0; k < word.length(); k++)
+        word[k] = tolower(word[k]);
 
     nodePointer ptr = root, lastPrefixNode = NULL;
     short i, j, count, lastPrefixCharIndex = (word[0] - 'a');
@@ -159,6 +159,83 @@ void Trie::display(ostream &out, nodePointer node, string str) const
             str2 = str;
             str2 += i + 'a';
             display(out, node->children[i], str2);
+        }
+    }
+}
+
+void Trie::toPque(myPQ &words) const
+{
+    toPqueAux(root, "", words);
+}
+
+void Trie::toPqueAux(nodePointer node, string str, myPQ &words) const
+{
+    string str2;
+    if (node->isEndofWord)
+    {
+        str += '\0';
+        words.push(str);
+    }
+    for (int i = 0; i < alphabet_size; i++)
+    {
+        if (node == root)
+            str = "";
+        if (node->children[i])
+        {
+            str2 = str;
+            str2 += i + 'a';
+            toPqueAux(node->children[i], str2, words);
+        }
+    }
+}
+
+void Trie::toCrosswordsBoard()
+{
+    myPQ words;
+
+    this->toPque(words);
+    int maxLength = words.top().length() - 1;
+    crosswordBoard.resize(maxLength * 3, vector<pair<char, bool>>(maxLength * 3, {'0', false}));
+
+    for (int i = 0; i < maxLength; ++i)
+        crosswordBoard[maxLength + i][maxLength].first = words.top()[i];
+    words.pop();
+
+    while (words.size())
+    {
+        placeWordOnGrid(words.top(), maxLength);
+        words.pop();
+    }
+}
+
+void Trie::placeWordOnGrid(string word, int maxLength)
+{
+    int i, j, k;
+    bool placed = false;
+    for (i = 0; i < maxLength; ++i)
+    {
+        for (j = 0; j < word.length() - 1; ++j)
+        {
+            if (crosswordBoard[maxLength + i][maxLength].first == word[j] && !crosswordBoard[maxLength + i][maxLength].second)
+            {
+                for (k = j + 1; k < word.length() - 1; ++k)
+                    crosswordBoard[maxLength + i][maxLength + (k - j)].first = word[k];
+                if (j)
+                    for (k = j - 1; k >= 0; --k)
+                        crosswordBoard[maxLength + i][maxLength - (j - k)].first = word[k];
+                crosswordBoard[maxLength + i][maxLength].second = true;
+                placed = true;
+                break;
+            }
+        }
+        if (placed)
+            break;
+    }
+    if (!placed)
+    {
+        for (i = 0; i < word.length() - 1; ++i)
+        {
+            crosswordBoard[maxLength * 2][maxLength + i].first = word[i];
         }
     }
 }

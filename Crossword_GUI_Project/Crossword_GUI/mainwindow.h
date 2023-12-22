@@ -2,7 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include <QPushButton>
+#include "gamewindow.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -15,7 +16,12 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void switchToGameWindow();
+
+
 private:
     Ui::MainWindow *ui;
+    GameWindow *gameWindow;
 };
 #endif // MAINWINDOW_H

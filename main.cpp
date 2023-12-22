@@ -79,4 +79,25 @@ int main()
         }
         cout << endl;
     }
+
+
+    cout << "\n*** Reading from file\n";
+    string word1;
+    fstream myfile1;
+    string riddles[6];
+    myfile1.open("riddles.txt");
+    int i =0;
+    while (!myfile1.eof())
+    {
+        getline(myfile1, word1);
+        riddles[i]=word1;
+        i++;
+    }
+    myfile1.close();
+
+    for(int i=0;i<6;i++)
+        cout<<riddles[i]<<endl;
+
+
+
 }

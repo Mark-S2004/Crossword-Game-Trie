@@ -28,7 +28,7 @@ public:
     QVBoxLayout *verticalLayout;
     QGridLayout *gridLayout;
     QLabel *label_2;
-    QPushButton *pushButton;
+    QPushButton *switchGameButton;
     QSpacerItem *horizontalSpacer_2;
     QSpacerItem *verticalSpacer_2;
     QSpacerItem *horizontalSpacer;
@@ -39,7 +39,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(800, 600);
+        MainWindow->resize(753, 583);
         QPalette palette;
         QBrush brush(QColor(240, 241, 242, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -75,10 +75,10 @@ public:
 
         gridLayout->addWidget(label_2, 4, 1, 1, 1);
 
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName("pushButton");
+        switchGameButton = new QPushButton(centralwidget);
+        switchGameButton->setObjectName("switchGameButton");
 
-        gridLayout->addWidget(pushButton, 6, 1, 1, 1);
+        gridLayout->addWidget(switchGameButton, 6, 1, 1, 1);
 
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -127,7 +127,7 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "Press Start to play.....", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "Start", nullptr));
+        switchGameButton->setText(QCoreApplication::translate("MainWindow", "Start", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Crossword Game", nullptr));
     } // retranslateUi
 

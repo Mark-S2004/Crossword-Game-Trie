@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <queue>
+#include <algorithm>
 using namespace std;
 #define alphabet_size 26
 class Trie
@@ -39,8 +41,27 @@ private:
     typedef Node *nodePointer;
 
     nodePointer root;
+    class wordsComparison
+    {
+    public:
+        wordsComparison() {}
+        bool operator()(const string &lhs, const string &rhs) const
+        {
+            return lhs.length() < rhs.length();
+        }
+    };
+
+    typedef priority_queue<string, vector<string>, wordsComparison> myPQ;
+
+    void toPque(myPQ &words) const;
+
+    void toPqueAux(nodePointer node, string str, myPQ &words) const;
+
+    void placeWordOnGrid(string word, int maxLength);
 
 public:
+    vector<vector<pair<char, bool>>> crosswordBoard;
+
     Trie();
 
     ~Trie();
@@ -51,7 +72,7 @@ public:
 
     void copyConstructor(nodePointer thisPtr, nodePointer origPtr);
 
-    const Trie & operator=(const Trie & rhs);
+    const Trie &operator=(const Trie &rhs);
 
     Trie(const Trie &origTrie);
 
@@ -66,6 +87,8 @@ public:
     void displayReq(ostream &out) const;
 
     void display(ostream &out, nodePointer root, string str) const;
+
+    void toCrosswordsBoard();
 };
 
 ostream &operator<<(ostream &out, const Trie &aTrie);

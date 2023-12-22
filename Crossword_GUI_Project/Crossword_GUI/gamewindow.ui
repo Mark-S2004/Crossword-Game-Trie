@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>GameWindow</class>
+ <widget class="QMainWindow" name="GameWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>20</y>
+      <width>381</width>
+      <height>57</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>26</pointsize>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="text">
+     <string>Crossword Game</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fifthrid">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>320</y>
+      <width>63</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="secrid">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>190</y>
+      <width>63</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fourthrid">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>270</y>
+      <width>63</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>90</y>
+      <width>291</width>
+      <height>379</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="10" column="3">
+      <widget class="QLineEdit" name="lineEdit_18"/>
+     </item>
+     <item row="9" column="1">
+      <widget class="QLineEdit" name="lineEdit_20"/>
+     </item>
+     <item row="3" column="6">
+      <widget class="QLineEdit" name="lineEdit_4"/>
+     </item>
+     <item row="9" column="2">
+      <widget class="QLineEdit" name="lineEdit_19"/>
+     </item>
+     <item row="2" column="6">
+      <widget class="QLineEdit" name="lineEdit_3"/>
+     </item>
+     <item row="9" column="5">
+      <widget class="QLineEdit" name="lineEdit_21"/>
+     </item>
+     <item row="1" column="6">
+      <widget class="QLineEdit" name="lineEdit_2"/>
+     </item>
+     <item row="3" column="3">
+      <widget class="QLineEdit" name="lineEdit_11"/>
+     </item>
+     <item row="0" column="6">
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="3">
+      <widget class="QLineEdit" name="lineEdit_12"/>
+     </item>
+     <item row="5" column="5">
+      <widget class="QLineEdit" name="lineEdit_8"/>
+     </item>
+     <item row="5" column="4">
+      <widget class="QLineEdit" name="lineEdit_10"/>
+     </item>
+     <item row="5" column="7">
+      <widget class="QLineEdit" name="lineEdit_13"/>
+     </item>
+     <item row="8" column="3">
+      <widget class="QLineEdit" name="lineEdit_16"/>
+     </item>
+     <item row="4" column="6">
+      <widget class="QLineEdit" name="lineEdit_5"/>
+     </item>
+     <item row="7" column="3">
+      <widget class="QLineEdit" name="lineEdit_15"/>
+     </item>
+     <item row="9" column="4">
+      <widget class="QLineEdit" name="lineEdit_22"/>
+     </item>
+     <item row="5" column="6">
+      <widget class="QLineEdit" name="lineEdit_6"/>
+     </item>
+     <item row="3" column="4">
+      <widget class="QLineEdit" name="lineEdit_9"/>
+     </item>
+     <item row="6" column="3">
+      <widget class="QLineEdit" name="lineEdit_14"/>
+     </item>
+     <item row="3" column="5">
+      <widget class="QLineEdit" name="lineEdit_7"/>
+     </item>
+     <item row="9" column="3">
+      <widget class="QLineEdit" name="lineEdit_17"/>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>4</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="2">
+      <widget class="QLabel" name="label_5">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>3</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="QLabel" name="label_3">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>2</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="thirdrid">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>230</y>
+      <width>63</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="firstrid">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>150</y>
+      <width>63</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>540</y>
+      <width>80</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Submit</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

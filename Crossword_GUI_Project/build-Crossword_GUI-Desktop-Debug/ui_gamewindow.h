@@ -1,34 +1,29 @@
 /********************************************************************************
-** Form generated from reading UI file 'game.ui'
+** Form generated from reading UI file 'gamewindow.ui'
 **
 ** Created by: Qt User Interface Compiler version 6.6.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_GAME_H
-#define UI_GAME_H
+#ifndef UI_GAMEWINDOW_H
+#define UI_GAMEWINDOW_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QDialog>
 #include <QtWidgets/QGridLayout>
-#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Dialog
+class Ui_GameWindow
 {
 public:
-    QWidget *layoutWidget;
-    QHBoxLayout *horizontalLayout;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton;
-    QPushButton *pushButton_3;
+    QWidget *centralwidget;
     QLabel *label_2;
     QLabel *fifthrid;
     QLabel *secrid;
@@ -62,44 +57,18 @@ public:
     QLabel *label_3;
     QLabel *thirdrid;
     QLabel *firstrid;
+    QPushButton *pushButton_3;
 
-    void setupUi(QDialog *Dialog)
+    void setupUi(QMainWindow *GameWindow)
     {
-        if (Dialog->objectName().isEmpty())
-            Dialog->setObjectName("Dialog");
-        Dialog->resize(800, 600);
-        QPalette palette;
-        QBrush brush(QColor(106, 109, 166, 255));
-        brush.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Active, QPalette::Window, brush);
-        palette.setBrush(QPalette::Inactive, QPalette::Window, brush);
-        palette.setBrush(QPalette::Disabled, QPalette::Base, brush);
-        palette.setBrush(QPalette::Disabled, QPalette::Window, brush);
-        Dialog->setPalette(palette);
-        layoutWidget = new QWidget(Dialog);
-        layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(470, 550, 256, 31));
-        horizontalLayout = new QHBoxLayout(layoutWidget);
-        horizontalLayout->setObjectName("horizontalLayout");
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        pushButton_2 = new QPushButton(layoutWidget);
-        pushButton_2->setObjectName("pushButton_2");
-
-        horizontalLayout->addWidget(pushButton_2);
-
-        pushButton = new QPushButton(layoutWidget);
-        pushButton->setObjectName("pushButton");
-
-        horizontalLayout->addWidget(pushButton);
-
-        pushButton_3 = new QPushButton(layoutWidget);
-        pushButton_3->setObjectName("pushButton_3");
-
-        horizontalLayout->addWidget(pushButton_3);
-
-        label_2 = new QLabel(Dialog);
+        if (GameWindow->objectName().isEmpty())
+            GameWindow->setObjectName("GameWindow");
+        GameWindow->resize(800, 600);
+        centralwidget = new QWidget(GameWindow);
+        centralwidget->setObjectName("centralwidget");
+        label_2 = new QLabel(centralwidget);
         label_2->setObjectName("label_2");
-        label_2->setGeometry(QRect(160, 40, 381, 57));
+        label_2->setGeometry(QRect(200, 20, 381, 57));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -112,18 +81,18 @@ public:
         label_2->setFont(font);
         label_2->setFrameShape(QFrame::NoFrame);
         label_2->setAlignment(Qt::AlignCenter);
-        fifthrid = new QLabel(Dialog);
+        fifthrid = new QLabel(centralwidget);
         fifthrid->setObjectName("fifthrid");
-        fifthrid->setGeometry(QRect(40, 370, 63, 20));
-        secrid = new QLabel(Dialog);
+        fifthrid->setGeometry(QRect(60, 320, 63, 20));
+        secrid = new QLabel(centralwidget);
         secrid->setObjectName("secrid");
-        secrid->setGeometry(QRect(40, 240, 63, 20));
-        fourthrid = new QLabel(Dialog);
+        secrid->setGeometry(QRect(60, 190, 63, 20));
+        fourthrid = new QLabel(centralwidget);
         fourthrid->setObjectName("fourthrid");
-        fourthrid->setGeometry(QRect(40, 320, 63, 20));
-        layoutWidget_2 = new QWidget(Dialog);
+        fourthrid->setGeometry(QRect(60, 270, 63, 20));
+        layoutWidget_2 = new QWidget(centralwidget);
         layoutWidget_2->setObjectName("layoutWidget_2");
-        layoutWidget_2->setGeometry(QRect(410, 130, 377, 379));
+        layoutWidget_2->setGeometry(QRect(450, 90, 291, 379));
         gridLayout = new QGridLayout(layoutWidget_2);
         gridLayout->setObjectName("gridLayout");
         gridLayout->setContentsMargins(0, 0, 0, 0);
@@ -262,42 +231,44 @@ public:
 
         gridLayout->addWidget(label_3, 3, 2, 1, 1);
 
-        thirdrid = new QLabel(Dialog);
+        thirdrid = new QLabel(centralwidget);
         thirdrid->setObjectName("thirdrid");
-        thirdrid->setGeometry(QRect(40, 280, 63, 20));
-        firstrid = new QLabel(Dialog);
+        thirdrid->setGeometry(QRect(60, 230, 63, 16));
+        firstrid = new QLabel(centralwidget);
         firstrid->setObjectName("firstrid");
-        firstrid->setGeometry(QRect(40, 200, 63, 20));
+        firstrid->setGeometry(QRect(60, 150, 63, 20));
+        pushButton_3 = new QPushButton(centralwidget);
+        pushButton_3->setObjectName("pushButton_3");
+        pushButton_3->setGeometry(QRect(620, 540, 80, 29));
+        GameWindow->setCentralWidget(centralwidget);
 
-        retranslateUi(Dialog);
+        retranslateUi(GameWindow);
 
-        QMetaObject::connectSlotsByName(Dialog);
+        QMetaObject::connectSlotsByName(GameWindow);
     } // setupUi
 
-    void retranslateUi(QDialog *Dialog)
+    void retranslateUi(QMainWindow *GameWindow)
     {
-        Dialog->setWindowTitle(QCoreApplication::translate("Dialog", "Dialog", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("Dialog", "Home", nullptr));
-        pushButton->setText(QCoreApplication::translate("Dialog", "Submit", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("Dialog", "Finish", nullptr));
-        label_2->setText(QCoreApplication::translate("Dialog", "Crossword Game", nullptr));
-        fifthrid->setText(QCoreApplication::translate("Dialog", "TextLabel", nullptr));
-        secrid->setText(QCoreApplication::translate("Dialog", "TextLabel", nullptr));
-        fourthrid->setText(QCoreApplication::translate("Dialog", "TextLabel", nullptr));
-        label->setText(QCoreApplication::translate("Dialog", "1", nullptr));
-        label_4->setText(QCoreApplication::translate("Dialog", "4", nullptr));
-        label_5->setText(QCoreApplication::translate("Dialog", "3", nullptr));
-        label_3->setText(QCoreApplication::translate("Dialog", "2", nullptr));
-        thirdrid->setText(QCoreApplication::translate("Dialog", "TextLabel", nullptr));
-        firstrid->setText(QCoreApplication::translate("Dialog", "TextLabel", nullptr));
+        GameWindow->setWindowTitle(QCoreApplication::translate("GameWindow", "MainWindow", nullptr));
+        label_2->setText(QCoreApplication::translate("GameWindow", "Crossword Game", nullptr));
+        fifthrid->setText(QCoreApplication::translate("GameWindow", "TextLabel", nullptr));
+        secrid->setText(QCoreApplication::translate("GameWindow", "TextLabel", nullptr));
+        fourthrid->setText(QCoreApplication::translate("GameWindow", "TextLabel", nullptr));
+        label->setText(QCoreApplication::translate("GameWindow", "1", nullptr));
+        label_4->setText(QCoreApplication::translate("GameWindow", "4", nullptr));
+        label_5->setText(QCoreApplication::translate("GameWindow", "3", nullptr));
+        label_3->setText(QCoreApplication::translate("GameWindow", "2", nullptr));
+        thirdrid->setText(QCoreApplication::translate("GameWindow", "TextLabel", nullptr));
+        firstrid->setText(QCoreApplication::translate("GameWindow", "TextLabel", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("GameWindow", "Submit", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class Dialog: public Ui_Dialog {};
+    class GameWindow: public Ui_GameWindow {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_GAME_H
+#endif // UI_GAMEWINDOW_H

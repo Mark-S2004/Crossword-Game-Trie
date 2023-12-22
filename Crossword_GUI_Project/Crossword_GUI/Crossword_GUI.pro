@@ -10,15 +10,17 @@ CONFIG += c++17
 
 SOURCES += \
     Trie.cpp \
+    gamewindow.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
-    Trie.hpp \
-    mainwindow.h
+    gamewindow.h \
+    mainwindow.h \
+    trie.hpp
 
 FORMS += \
-    game.ui \
+    gamewindow.ui \
     mainwindow.ui
 
 # Default rules for deployment.
