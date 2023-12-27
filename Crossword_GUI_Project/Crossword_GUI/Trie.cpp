@@ -195,7 +195,7 @@ void Trie::toCrosswordsBoard()
 
     this->toPque(words);
     int maxLength = words.top().length() - 1;
-    crosswordBoard.resize(maxLength * 3, vector<pair<char, bool>>(maxLength * 3, {'0', false}));
+    crosswordBoard.resize(maxLength * 3, vector<pair<char, bool>>(maxLength * 3, {'_', false}));
 
     for (int i = 0; i < maxLength; ++i)
         crosswordBoard[maxLength + i][maxLength].first = words.top()[i];

@@ -12,18 +12,25 @@ SOURCES += \
     Trie.cpp \
     gamewindow.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    winwindow.cpp
 
 HEADERS += \
     gamewindow.h \
     mainwindow.h \
-    trie.hpp
+    trie.hpp \
+    winwindow.h
 
 FORMS += \
     gamewindow.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    winwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    riddles.txt \
+    words.txt

@@ -1,0 +1,5 @@
+Data structure that inserts and removes from different ends
+Our project's data structure
+Data Structure TA
+Your favorite doctor (hint: he teaches data structure)
+Data structure that is only accessible from the top

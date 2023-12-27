@@ -25,9 +25,9 @@ class Ui_GameWindow
 public:
     QWidget *centralwidget;
     QLabel *label_2;
-    QLabel *fifthrid;
-    QLabel *secrid;
-    QLabel *fourthrid;
+    QLabel *rid5;
+    QLabel *rid2;
+    QLabel *rid4;
     QWidget *layoutWidget_2;
     QGridLayout *gridLayout;
     QLineEdit *lineEdit_18;
@@ -55,8 +55,8 @@ public:
     QLabel *label_4;
     QLabel *label_5;
     QLabel *label_3;
-    QLabel *thirdrid;
-    QLabel *firstrid;
+    QLabel *rid3;
+    QLabel *rid1;
     QPushButton *pushButton_3;
 
     void setupUi(QMainWindow *GameWindow)
@@ -81,18 +81,18 @@ public:
         label_2->setFont(font);
         label_2->setFrameShape(QFrame::NoFrame);
         label_2->setAlignment(Qt::AlignCenter);
-        fifthrid = new QLabel(centralwidget);
-        fifthrid->setObjectName("fifthrid");
-        fifthrid->setGeometry(QRect(60, 320, 63, 20));
-        secrid = new QLabel(centralwidget);
-        secrid->setObjectName("secrid");
-        secrid->setGeometry(QRect(60, 190, 63, 20));
-        fourthrid = new QLabel(centralwidget);
-        fourthrid->setObjectName("fourthrid");
-        fourthrid->setGeometry(QRect(60, 270, 63, 20));
+        rid5 = new QLabel(centralwidget);
+        rid5->setObjectName("rid5");
+        rid5->setGeometry(QRect(60, 320, 63, 20));
+        rid2 = new QLabel(centralwidget);
+        rid2->setObjectName("rid2");
+        rid2->setGeometry(QRect(60, 190, 63, 20));
+        rid4 = new QLabel(centralwidget);
+        rid4->setObjectName("rid4");
+        rid4->setGeometry(QRect(60, 270, 63, 20));
         layoutWidget_2 = new QWidget(centralwidget);
         layoutWidget_2->setObjectName("layoutWidget_2");
-        layoutWidget_2->setGeometry(QRect(450, 90, 291, 379));
+        layoutWidget_2->setGeometry(QRect(450, 90, 377, 379));
         gridLayout = new QGridLayout(layoutWidget_2);
         gridLayout->setObjectName("gridLayout");
         gridLayout->setContentsMargins(0, 0, 0, 0);
@@ -231,12 +231,12 @@ public:
 
         gridLayout->addWidget(label_3, 3, 2, 1, 1);
 
-        thirdrid = new QLabel(centralwidget);
-        thirdrid->setObjectName("thirdrid");
-        thirdrid->setGeometry(QRect(60, 230, 63, 16));
-        firstrid = new QLabel(centralwidget);
-        firstrid->setObjectName("firstrid");
-        firstrid->setGeometry(QRect(60, 150, 63, 20));
+        rid3 = new QLabel(centralwidget);
+        rid3->setObjectName("rid3");
+        rid3->setGeometry(QRect(60, 230, 63, 16));
+        rid1 = new QLabel(centralwidget);
+        rid1->setObjectName("rid1");
+        rid1->setGeometry(QRect(60, 150, 63, 20));
         pushButton_3 = new QPushButton(centralwidget);
         pushButton_3->setObjectName("pushButton_3");
         pushButton_3->setGeometry(QRect(620, 540, 80, 29));
@@ -251,15 +251,15 @@ public:
     {
         GameWindow->setWindowTitle(QCoreApplication::translate("GameWindow", "MainWindow", nullptr));
         label_2->setText(QCoreApplication::translate("GameWindow", "Crossword Game", nullptr));
-        fifthrid->setText(QCoreApplication::translate("GameWindow", "TextLabel", nullptr));
-        secrid->setText(QCoreApplication::translate("GameWindow", "TextLabel", nullptr));
-        fourthrid->setText(QCoreApplication::translate("GameWindow", "TextLabel", nullptr));
+        rid5->setText(QCoreApplication::translate("GameWindow", "TextLabel", nullptr));
+        rid2->setText(QCoreApplication::translate("GameWindow", "TextLabel", nullptr));
+        rid4->setText(QCoreApplication::translate("GameWindow", "TextLabel", nullptr));
         label->setText(QCoreApplication::translate("GameWindow", "1", nullptr));
         label_4->setText(QCoreApplication::translate("GameWindow", "4", nullptr));
         label_5->setText(QCoreApplication::translate("GameWindow", "3", nullptr));
         label_3->setText(QCoreApplication::translate("GameWindow", "2", nullptr));
-        thirdrid->setText(QCoreApplication::translate("GameWindow", "TextLabel", nullptr));
-        firstrid->setText(QCoreApplication::translate("GameWindow", "TextLabel", nullptr));
+        rid3->setText(QCoreApplication::translate("GameWindow", "TextLabel", nullptr));
+        rid1->setText(QCoreApplication::translate("GameWindow", "TextLabel", nullptr));
         pushButton_3->setText(QCoreApplication::translate("GameWindow", "Submit", nullptr));
     } // retranslateUi
 
