@@ -4,6 +4,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QLineEdit>
+#include "winwindow.h"
 
 GameWindow::GameWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -21,7 +22,7 @@ GameWindow::GameWindow(QWidget *parent) :
         {
             QString line = in.readLine();
 
-            QLabel* label = new QLabel(line, this);
+            QLabel* label = new QLabel(QString("%1. %2").arg(lineIndex + 1).arg(line), this);
             label->setObjectName(QString("label%1").arg(lineIndex));
             // label->setAlignment(Qt::AlignCenter);
 
@@ -40,26 +41,18 @@ GameWindow::GameWindow(QWidget *parent) :
         qDebug() << "Error opening the riddles file";
     }
 
-    // QLabel* label1 =new QLabel("YEhua");
-    // QLabel* label2 =new QLabel("geno");
-    // QLabel* label3 =new QLabel("YEhua");
-    // QLabel* label4 =new QLabel("geno");
-    // ui->gridLayout->addWidget(label1,1,2);
-    // ui->gridLayout->addWidget(label2);
-    // ui->gridLayout->addWidget(label3);
-    // ui->gridLayout->addWidget(label4);
-
 
     //Words Import
-    Trie t1;
     QFile wordsFile("E:\\ASU\\Semester 5\\Data Structure\\Crosswords-Game-Trie\\Crossword_GUI_Project\\Crossword_GUI\\words.txt");
     if (wordsFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         QTextStream in1(&wordsFile);
+        int lineindex=1;
         while (!in1.atEnd())
         {
             QString line1 = in1.readLine();
-            t1.insert(line1.toStdString());
+            t1.insertIndex(line1.toStdString(),lineindex);
+            lineindex++;
         }
 
         wordsFile.close();
@@ -70,20 +63,28 @@ GameWindow::GameWindow(QWidget *parent) :
     }
 
     t1.toCrosswordsBoard();
-    for (int i = 0; i < (int) t1.crosswordBoard.size(); ++i)
+    for (int i = 0; i < static_cast<int>(t1.crosswordBoard.size()); ++i)
     {
-        for (int j = 0; j < (int) t1.crosswordBoard.size(); ++j)
+        for (int j = 0; j < static_cast<int>(t1.crosswordBoard.size()); ++j)
         {
-            if(t1.crosswordBoard[i][j].first!='_'){
-            cout << t1.crosswordBoard[i][j].first;
-            QLineEdit *lineEdit = new QLineEdit();
-            lineEdit->setAlignment(Qt::AlignCenter);
-            ui->gridLayout->addWidget(lineEdit,i,j);
-
+            if (t1.crosswordBoard[i][j].first != '_') {
+                cout << t1.crosswordBoard[i][j].first;
+                QLineEdit *lineEdit = new QLineEdit();
+                lineEdit->setAlignment(Qt::AlignCenter);
+                lineEdit->setMaxLength(1);
+                QString objectName = QString("lineEdit_%1_%2").arg(i).arg(j);
+                lineEdit->setObjectName(objectName);
+                ui->gridLayout->addWidget(lineEdit, i, j);
+                if(t1.crosswordBoard[i][j].second>0){
+                    QString labelName = QString("%1").arg(t1.crosswordBoard[i][j].second);
+                    QLabel *label = new QLabel(labelName);
+                    ui->gridLayout->addWidget(label,i,j-1);
+                }
             }
         }
         cout << endl;
     }
+
 
 
 
@@ -95,25 +96,35 @@ GameWindow::~GameWindow()
 }
 
 
-void GameWindow::on_submitBtn_clicked(Trie t1)
+void GameWindow::on_submitBtn_clicked()
 {
-    // bool result=true;
-    // for (int i = 0; i < (int) t1.crosswordBoard.size(); ++i)
-    // {
-    //     for (int j = 0; j < (int) t1.crosswordBoard.size(); ++j)
-    //     {
-    //         if(t1.crosswordBoard[i][j].first!='_'){
-    //             if(ui->gridLayout->
+    bool result = true;
+    for (int i = 0; i < static_cast<int>(t1.crosswordBoard.size()); ++i)
+    {
+        for (int j = 0; j < static_cast<int>(t1.crosswordBoard.size()); ++j)
+        {
+            if (t1.crosswordBoard[i][j].first != '_') {
+                QString objectName = QString("lineEdit_%1_%2").arg(i).arg(j);
+                QLineEdit *lineEdit = findChild<QLineEdit *>(objectName);
+                if (lineEdit) {
+                    QString value = lineEdit->text();
+                    if (value != t1.crosswordBoard[i][j].first) {
+                        result = false;
+                        break;
+                    }
+                }
+            }
+        }
+        cout << endl;
+    }
 
-    //         }
-    //     }
-    //     cout << endl;
-    // }
-    // if(result){
-
-    // }
-    // else{
-
-    // }
+    if (result) {
+        qDebug()<<"You have WON!!!";
+        WinWindow *winWindow = new WinWindow(this); // Create an instance of WinWindow
+        winWindow->show(); // Show the WinWindow
+        hide();
+    } else {
+        qDebug()<<"You have Lost, better luck next time";
+    }
 }
 

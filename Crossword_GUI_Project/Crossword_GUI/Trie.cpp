@@ -75,6 +75,22 @@ void Trie::insert(const string word)
     current->isEndofWord = true;
 }
 
+void Trie::insertIndex(const string word,const int indx)
+{
+    Trie::nodePointer current = root;
+    for (char c : word)
+    {
+        int i = tolower(c) - 'a';
+        if (current->children[i] == nullptr)
+        {
+            current->children[i] = new Node();
+        }
+        current = current->children[i];
+    }
+    current->isEndofWord = true;
+    current->index = indx;
+}
+
 bool Trie::search(const string word)
 {
     nodePointer ptr = root;
@@ -107,13 +123,13 @@ void Trie::deleteAllNodes(nodePointer lastPrefixNode, short lastPrefixCharIndex,
 
 void Trie::deleteWord(string word)
 {
-    for (int k = 0; k < word.length(); k++)
+    for (int k = 0; k < (int) word.length(); k++)
         word[k] = tolower(word[k]);
 
     nodePointer ptr = root, lastPrefixNode = NULL;
     short i, j, count, lastPrefixCharIndex = (word[0] - 'a');
 
-    for (j = 0; j < word.length(); j++)
+    for (j = 0; j < (int) word.length(); j++)
     {
         if (!ptr->children[word[j] - 'a'])
         {
@@ -174,7 +190,7 @@ void Trie::toPqueAux(nodePointer node, string str, myPQ &words) const
     if (node->isEndofWord)
     {
         str += '\0';
-        words.push(str);
+        words.push({str,node->index});
     }
     for (int i = 0; i < alphabet_size; i++)
     {
@@ -194,11 +210,12 @@ void Trie::toCrosswordsBoard()
     myPQ words;
 
     this->toPque(words);
-    int maxLength = words.top().length() - 1;
-    crosswordBoard.resize(maxLength * 3, vector<pair<char, bool>>(maxLength * 3, {'_', false}));
+    int maxLength = words.top().first.length() - 1;
+    crosswordBoard.resize(maxLength * 3, vector<pair<char, int>>(maxLength * 3, {'_', 0}));
 
     for (int i = 0; i < maxLength; ++i)
-        crosswordBoard[maxLength + i][maxLength].first = words.top()[i];
+        crosswordBoard[maxLength + i][maxLength].first = words.top().first[i];
+    // crosswordBoard[maxLength][maxLength].second = words.top().second;
     words.pop();
 
     while (words.size())
@@ -208,22 +225,29 @@ void Trie::toCrosswordsBoard()
     }
 }
 
-void Trie::placeWordOnGrid(string word, int maxLength)
+void Trie::placeWordOnGrid(pair<string,int> word, int maxLength)
 {
     int i, j, k;
     bool placed = false;
+    cout<<word.second<<endl;
     for (i = 0; i < maxLength; ++i)
     {
-        for (j = 0; j < word.length() - 1; ++j)
+        for (j = 0; j < (int) word.first.length() - 1; ++j)
         {
-            if (crosswordBoard[maxLength + i][maxLength].first == word[j] && !crosswordBoard[maxLength + i][maxLength].second)
+            if (crosswordBoard[maxLength + i][maxLength].first == word.first[j] && crosswordBoard[maxLength + i][maxLength].second==0)
             {
-                for (k = j + 1; k < word.length() - 1; ++k)
-                    crosswordBoard[maxLength + i][maxLength + (k - j)].first = word[k];
-                if (j)
-                    for (k = j - 1; k >= 0; --k)
-                        crosswordBoard[maxLength + i][maxLength - (j - k)].first = word[k];
-                crosswordBoard[maxLength + i][maxLength].second = true;
+                for (k = j + 1; k < (int) word.first.length() - 1; ++k)
+                    crosswordBoard[maxLength + i][maxLength + (k - j)].first = word.first[k];
+                if (j){
+                    for (k = j - 1; k >= 0; --k){
+                        crosswordBoard[maxLength + i][maxLength - (j - k)].first = word.first[k];
+                        if(!k)
+                            crosswordBoard[maxLength + i][maxLength - (j - k)].second = word.second;
+                    }    
+                    crosswordBoard[maxLength + i][maxLength].second = -1;
+                }
+                else
+                    crosswordBoard[maxLength + i][maxLength].second = word.second;
                 placed = true;
                 break;
             }
@@ -232,10 +256,11 @@ void Trie::placeWordOnGrid(string word, int maxLength)
             break;
     }
     if (!placed)
-    {
-        for (i = 0; i < word.length() - 1; ++i)
+    {   
+        crosswordBoard[maxLength * 2][maxLength].second = word.second;
+        for (i = 0; i < (int) word.first.length() - 1; ++i)
         {
-            crosswordBoard[maxLength * 2][maxLength + i].first = word[i];
+            crosswordBoard[maxLength * 2][maxLength + i].first = word.first[i];
         }
     }
 }

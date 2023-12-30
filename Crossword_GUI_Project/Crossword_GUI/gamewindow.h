@@ -17,10 +17,11 @@ public:
     ~GameWindow();
 
 private slots:
-    void on_submitBtn_clicked(Trie t1);
+    void on_submitBtn_clicked();
 
 private:
     Ui::GameWindow *ui;
+    Trie t1;
 };
 
 #endif // GAMEWINDOW_H

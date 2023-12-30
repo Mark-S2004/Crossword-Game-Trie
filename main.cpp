@@ -61,13 +61,15 @@ int main()
     string word;
     fstream myfile;
     myfile.open("words.txt");
+    int lineindex=1;
     while (!myfile.eof())
     {
         getline(myfile, word);
-        t1.insert(word);
+        t1.insertIndex(word,lineindex);
+        lineindex++;
     }
     myfile.close();
-    cout << t1;
+    cout << t1<<endl;
 
     cout << "\n*** Testing crosswords board generator\n";
     t1.toCrosswordsBoard();
@@ -75,11 +77,10 @@ int main()
     {
         for (int j = 0; j < t1.crosswordBoard.size(); ++j)
         {
-            cout << t1.crosswordBoard[i][j].first;
+            cout << t1.crosswordBoard[i][j].second;
         }
         cout << endl;
     }
-
 
     cout << "\n*** Reading from file\n";
     string word1;

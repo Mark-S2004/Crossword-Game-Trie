@@ -12,8 +12,9 @@ private:
     public:
         bool isEndofWord;
         Node *children[alphabet_size];
+        int index;
 
-        Node() : isEndofWord(false)
+        Node() : isEndofWord(false), index(0)
         {
             for (int i = 0; i < alphabet_size; i++)
             {
@@ -45,22 +46,22 @@ private:
     {
     public:
         wordsComparison() {}
-        bool operator()(const string &lhs, const string &rhs) const
+        bool operator()(const pair<string,int> &lhs, const pair<string,int> &rhs) const
         {
-            return lhs.length() < rhs.length();
+            return lhs.first.length() < rhs.first.length();
         }
     };
 
-    typedef priority_queue<string, vector<string>, wordsComparison> myPQ;
+    typedef priority_queue<pair<string,int>, vector<pair<string,int>>, wordsComparison> myPQ;
 
     void toPque(myPQ &words) const;
 
     void toPqueAux(nodePointer node, string str, myPQ &words) const;
 
-    void placeWordOnGrid(string word, int maxLength);
+    void placeWordOnGrid(pair<string,int> word, int maxLength);
 
 public:
-    vector<vector<pair<char, bool>>> crosswordBoard;
+    vector<vector<pair<char, int>>> crosswordBoard;
 
     Trie();
 
@@ -77,6 +78,8 @@ public:
     Trie(const Trie &origTrie);
 
     void insert(const string word);
+
+    void insertIndex(const string word,const int indx);
 
     bool search(const string word);
 

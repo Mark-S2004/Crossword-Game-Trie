@@ -40,18 +40,14 @@ struct qt_meta_stringdata_CLASSGameWindowENDCLASS_t {};
 static constexpr auto qt_meta_stringdata_CLASSGameWindowENDCLASS = QtMocHelpers::stringData(
     "GameWindow",
     "on_submitBtn_clicked",
-    "",
-    "Trie",
-    "t1"
+    ""
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSGameWindowENDCLASS_t {
-    uint offsetsAndSizes[10];
+    uint offsetsAndSizes[6];
     char stringdata0[11];
     char stringdata1[21];
     char stringdata2[1];
-    char stringdata3[5];
-    char stringdata4[3];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSGameWindowENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -59,15 +55,11 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSGameWindowENDCLASS_t qt_meta_st
     {
         QT_MOC_LITERAL(0, 10),  // "GameWindow"
         QT_MOC_LITERAL(11, 20),  // "on_submitBtn_clicked"
-        QT_MOC_LITERAL(32, 0),  // ""
-        QT_MOC_LITERAL(33, 4),  // "Trie"
-        QT_MOC_LITERAL(38, 2)   // "t1"
+        QT_MOC_LITERAL(32, 0)   // ""
     },
     "GameWindow",
     "on_submitBtn_clicked",
-    "",
-    "Trie",
-    "t1"
+    ""
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -87,10 +79,10 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSGameWindowENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   20,    2, 0x08,    1 /* Private */,
+       1,    0,   20,    2, 0x08,    1 /* Private */,
 
  // slots: parameters
-    QMetaType::Void, 0x80000000 | 3,    4,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -105,8 +97,7 @@ Q_CONSTINIT const QMetaObject GameWindow::staticMetaObject = { {
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<GameWindow, std::true_type>,
         // method 'on_submitBtn_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<Trie, std::false_type>
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
 } };
@@ -117,10 +108,11 @@ void GameWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<GameWindow *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->on_submitBtn_clicked((*reinterpret_cast< std::add_pointer_t<Trie>>(_a[1]))); break;
+        case 0: _t->on_submitBtn_clicked(); break;
         default: ;
         }
     }
+    (void)_a;
 }
 
 const QMetaObject *GameWindow::metaObject() const
