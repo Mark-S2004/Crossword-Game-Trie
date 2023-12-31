@@ -18,7 +18,11 @@ git clone https://github.com/Mark-S2004/Crossword-Game-Trie.git
 
 ## Usage
 
-To run the executable program navigate inside CrosswordGame directory and open the Crossword_GUI.exe file or create a shortcut if you want 😄
+To run the executable program navigate inside CrosswordGame directory. Open the Crossword_GUI.exe file or create a shortcut if you want 😄
+
+<img src="https://github.com/Mark-S2004/Crossword-Game-Trie/assets/84968875/a2376ade-b993-4754-ae95-d674cd84b051" alt="Main Window" width=325/>
+<img src="https://github.com/Mark-S2004/Crossword-Game-Trie/assets/84968875/176c2741-d29a-4259-86ca-7f8ff20f6fd8" alt="Game Window" width=335/>
+<img src="https://github.com/Mark-S2004/Crossword-Game-Trie/assets/84968875/582dbe7b-deac-4f78-be12-31d683a8b4db" alt="Result Window" width=335/>
 
 ## Configure and Edit the game
 
