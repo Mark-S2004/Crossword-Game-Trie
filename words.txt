@@ -1,6 +1,0 @@
-queue
-trie
-ahmed
-ashraf
-stack
-albert

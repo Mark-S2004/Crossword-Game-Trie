@@ -1,5 +1,0 @@
-Data structure that is efficient in inserting and erasing at the beginning and end
-our project's data structure
-Data Structure TA
-Your favorite doctor (hint: he teaches data structure)
-Data structure that is only accessible from the top
