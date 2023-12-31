@@ -5,12 +5,23 @@
 #include <QTextStream>
 #include <QLineEdit>
 #include "winwindow.h"
+#include "losewindow.h"
 
 GameWindow::GameWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::GameWindow)
 {
     ui->setupUi(this);
+    //Timer
+    timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &GameWindow::updateTimer);
+    timerLabel = new QLabel("00:00", this);
+    QFont font;
+    font.setPointSize(14);
+    timerLabel->setFont(font);
+    ui->verticalLayout->addWidget(timerLabel);
+    elapsedTimer.start();
+
     //Riddles Import
     QFile riddlesFile("E:\\ASU\\Semester 5\\Data Structure\\Crosswords-Game-Trie\\Crossword_GUI_Project\\Crossword_GUI\\riddles.txt");
     if (riddlesFile.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -27,7 +38,7 @@ GameWindow::GameWindow(QWidget *parent) :
             // label->setAlignment(Qt::AlignCenter);
 
             // Adjust the position or size of the label as needed
-            label->setGeometry(10, 200 + lineIndex * 30, 500, 30);
+            label->setGeometry(20, 200 + lineIndex * 30, 500, 30);
 
             label->show();
 
@@ -68,18 +79,18 @@ GameWindow::GameWindow(QWidget *parent) :
         for (int j = 0; j < static_cast<int>(t1.crosswordBoard.size()); ++j)
         {
             if (t1.crosswordBoard[i][j].first != '_') {
-                cout << t1.crosswordBoard[i][j].first;
                 QLineEdit *lineEdit = new QLineEdit();
                 lineEdit->setAlignment(Qt::AlignCenter);
                 lineEdit->setMaxLength(1);
                 QString objectName = QString("lineEdit_%1_%2").arg(i).arg(j);
                 lineEdit->setObjectName(objectName);
                 ui->gridLayout->addWidget(lineEdit, i, j);
-                if(t1.crosswordBoard[i][j].second>0){
-                    QString labelName = QString("%1").arg(t1.crosswordBoard[i][j].second);
-                    QLabel *label = new QLabel(labelName);
-                    ui->gridLayout->addWidget(label,i,j-1);
-                }
+
+            }
+            if(t1.crosswordBoard[i][j].second>0){
+                QLabel *label = new QLabel(QString::number(t1.crosswordBoard[i][j].second));
+                ui->gridLayout->setAlignment(Qt::AlignCenter);
+                ui->gridLayout->addWidget(label,i,j-1);
             }
         }
         cout << endl;
@@ -90,14 +101,41 @@ GameWindow::GameWindow(QWidget *parent) :
 
 }
 
+
+
 GameWindow::~GameWindow()
 {
     delete ui;
 }
 
+void GameWindow::showEvent(QShowEvent *event) {
+    QWidget::showEvent(event);
+    startTimer(); // Start the timer when the window is shown
+}
 
+void GameWindow::startTimer() {
+    timer->start(1000); // Start the timer with a 1-second interval (adjust as needed)
+}
+
+void GameWindow::stopTimer() {
+    timer->stop(); // Stop the timer
+}
+
+void GameWindow::updateTimer() {
+    int elapsedSeconds = elapsedTimer.elapsed() / 1000; // Calculate elapsed time in seconds
+    QTime displayTime(0, 0);
+    displayTime = displayTime.addSecs(elapsedSeconds);
+    timeStr = displayTime.toString("mm:ss");
+    timerLabel->setText(timeStr);
+
+}
 void GameWindow::on_submitBtn_clicked()
 {
+    stopTimer(); // Stop the timer before processing the submission
+
+    int elapsedSeconds = elapsedTimer.elapsed() / 1000; // Calculate elapsed time in seconds
+    qDebug()<< elapsedSeconds;
+
     bool result = true;
     for (int i = 0; i < static_cast<int>(t1.crosswordBoard.size()); ++i)
     {
@@ -121,10 +159,15 @@ void GameWindow::on_submitBtn_clicked()
     if (result) {
         qDebug()<<"You have WON!!!";
         WinWindow *winWindow = new WinWindow(this); // Create an instance of WinWindow
+        winWindow->updateTime(timeStr);
         winWindow->show(); // Show the WinWindow
         hide();
     } else {
         qDebug()<<"You have Lost, better luck next time";
+        LoseWindow *loseWindow = new LoseWindow(this); // Create an instance of WinWindow
+        loseWindow->updateTime(timeStr);
+        loseWindow->show(); // Show the WinWindow
+        hide();
     }
 }
 

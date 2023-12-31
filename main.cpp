@@ -77,7 +77,7 @@ int main()
     {
         for (int j = 0; j < t1.crosswordBoard.size(); ++j)
         {
-            cout << t1.crosswordBoard[i][j].second;
+            cout << t1.crosswordBoard[i][j].first;
         }
         cout << endl;
     }

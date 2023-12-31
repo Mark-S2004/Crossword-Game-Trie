@@ -1,0 +1,10 @@
+debug/Trie.o
+debug/gamewindow.o
+debug/losewindow.o
+debug/main.o
+debug/mainwindow.o
+debug/winwindow.o
+debug/moc_gamewindow.o
+debug/moc_losewindow.o
+debug/moc_mainwindow.o
+debug/moc_winwindow.o

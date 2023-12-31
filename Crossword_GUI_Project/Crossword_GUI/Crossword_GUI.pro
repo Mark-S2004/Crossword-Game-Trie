@@ -11,18 +11,21 @@ CONFIG += c++17
 SOURCES += \
     Trie.cpp \
     gamewindow.cpp \
+    losewindow.cpp \
     main.cpp \
     mainwindow.cpp \
     winwindow.cpp
 
 HEADERS += \
     gamewindow.h \
+    losewindow.h \
     mainwindow.h \
     trie.hpp \
     winwindow.h
 
 FORMS += \
     gamewindow.ui \
+    losewindow.ui \
     mainwindow.ui \
     winwindow.ui
 

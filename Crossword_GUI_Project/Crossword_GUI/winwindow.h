@@ -15,6 +15,11 @@ public:
     explicit WinWindow(QWidget *parent = nullptr);
     ~WinWindow();
 
+private slots:
+    void on_switchGameButton_clicked();
+
+public slots:
+    void updateTime(const QString &timeValue);
 private:
     Ui::WinWindow *ui;
 };

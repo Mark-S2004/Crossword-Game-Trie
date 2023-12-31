@@ -215,7 +215,7 @@ void Trie::toCrosswordsBoard()
 
     for (int i = 0; i < maxLength; ++i)
         crosswordBoard[maxLength + i][maxLength].first = words.top().first[i];
-    // crosswordBoard[maxLength][maxLength].second = words.top().second;
+    crosswordBoard[maxLength-1][maxLength+1].second = words.top().second;
     words.pop();
 
     while (words.size())
@@ -229,7 +229,6 @@ void Trie::placeWordOnGrid(pair<string,int> word, int maxLength)
 {
     int i, j, k;
     bool placed = false;
-    cout<<word.second<<endl;
     for (i = 0; i < maxLength; ++i)
     {
         for (j = 0; j < (int) word.first.length() - 1; ++j)

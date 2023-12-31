@@ -15,6 +15,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -27,6 +28,9 @@ public:
     QPushButton *submitBtn;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
+    QLabel *label;
 
     void setupUi(QMainWindow *GameWindow)
     {
@@ -55,10 +59,22 @@ public:
         submitBtn->setGeometry(QRect(620, 540, 80, 29));
         gridLayoutWidget = new QWidget(centralwidget);
         gridLayoutWidget->setObjectName("gridLayoutWidget");
-        gridLayoutWidget->setGeometry(QRect(510, 110, 241, 301));
+        gridLayoutWidget->setGeometry(QRect(500, 100, 281, 371));
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setObjectName("gridLayout");
         gridLayout->setContentsMargins(0, 0, 0, 0);
+        verticalLayoutWidget = new QWidget(centralwidget);
+        verticalLayoutWidget->setObjectName("verticalLayoutWidget");
+        verticalLayoutWidget->setGeometry(QRect(20, 530, 151, 61));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setObjectName("verticalLayout");
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        label = new QLabel(centralwidget);
+        label->setObjectName("label");
+        label->setGeometry(QRect(20, 150, 71, 51));
+        QFont font1;
+        font1.setPointSize(14);
+        label->setFont(font1);
         GameWindow->setCentralWidget(centralwidget);
 
         retranslateUi(GameWindow);
@@ -71,6 +87,7 @@ public:
         GameWindow->setWindowTitle(QCoreApplication::translate("GameWindow", "MainWindow", nullptr));
         title->setText(QCoreApplication::translate("GameWindow", "Crossword Game", nullptr));
         submitBtn->setText(QCoreApplication::translate("GameWindow", "Submit", nullptr));
+        label->setText(QCoreApplication::translate("GameWindow", "Clues:", nullptr));
     } // retranslateUi
 
 };

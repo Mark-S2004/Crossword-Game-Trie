@@ -215,7 +215,7 @@ void Trie::toCrosswordsBoard()
 
     for (int i = 0; i < maxLength; ++i)
         crosswordBoard[maxLength + i][maxLength].first = words.top().first[i];
-    // crosswordBoard[maxLength][maxLength].second = words.top().second;
+    crosswordBoard[maxLength-1][maxLength].second = words.top().second;
     words.pop();
 
     while (words.size())

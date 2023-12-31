@@ -26,13 +26,14 @@ public:
     QWidget *centralwidget;
     QGridLayout *gridLayout_2;
     QGridLayout *gridLayout;
-    QLabel *label_2;
     QSpacerItem *verticalSpacer;
-    QSpacerItem *horizontalSpacer_2;
-    QSpacerItem *horizontalSpacer;
     QPushButton *switchGameButton;
+    QSpacerItem *horizontalSpacer;
+    QSpacerItem *horizontalSpacer_2;
     QSpacerItem *verticalSpacer_2;
+    QLabel *label_2;
     QLabel *label;
+    QLabel *timerLabel;
 
     void setupUi(QMainWindow *WinWindow)
     {
@@ -45,6 +46,27 @@ public:
         gridLayout_2->setObjectName("gridLayout_2");
         gridLayout = new QGridLayout();
         gridLayout->setObjectName("gridLayout");
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer, 2, 1, 1, 1);
+
+        switchGameButton = new QPushButton(centralwidget);
+        switchGameButton->setObjectName("switchGameButton");
+
+        gridLayout->addWidget(switchGameButton, 7, 1, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer, 7, 0, 1, 1);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_2, 7, 2, 1, 1);
+
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer_2, 6, 1, 1, 1);
+
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName("label_2");
         QFont font;
@@ -53,27 +75,6 @@ public:
         label_2->setAlignment(Qt::AlignCenter);
 
         gridLayout->addWidget(label_2, 4, 1, 1, 1);
-
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout->addItem(verticalSpacer, 2, 1, 1, 1);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer_2, 6, 2, 1, 1);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer, 6, 0, 1, 1);
-
-        switchGameButton = new QPushButton(centralwidget);
-        switchGameButton->setObjectName("switchGameButton");
-
-        gridLayout->addWidget(switchGameButton, 6, 1, 1, 1);
-
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout->addItem(verticalSpacer_2, 5, 1, 1, 1);
 
         label = new QLabel(centralwidget);
         label->setObjectName("label");
@@ -92,6 +93,16 @@ public:
 
         gridLayout->addWidget(label, 3, 1, 1, 1);
 
+        timerLabel = new QLabel(centralwidget);
+        timerLabel->setObjectName("timerLabel");
+        QFont font2;
+        font2.setPointSize(14);
+        font2.setBold(true);
+        timerLabel->setFont(font2);
+        timerLabel->setAlignment(Qt::AlignCenter);
+
+        gridLayout->addWidget(timerLabel, 5, 1, 1, 1);
+
 
         gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
 
@@ -105,9 +116,10 @@ public:
     void retranslateUi(QMainWindow *WinWindow)
     {
         WinWindow->setWindowTitle(QCoreApplication::translate("WinWindow", "MainWindow", nullptr));
-        label_2->setText(QCoreApplication::translate("WinWindow", "Press Start to play again.....", nullptr));
         switchGameButton->setText(QCoreApplication::translate("WinWindow", "Start", nullptr));
+        label_2->setText(QCoreApplication::translate("WinWindow", "Press Start to play again.....", nullptr));
         label->setText(QCoreApplication::translate("WinWindow", "YOU'VE WON CONGRATS", nullptr));
+        timerLabel->setText(QString());
     } // retranslateUi
 
 };
