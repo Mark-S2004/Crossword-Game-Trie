@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     QString executable_path = QCoreApplication::applicationDirPath();
     QIcon icon(executable_path + "/icon.png");
     setWindowIcon(icon);
+    setWindowTitle("Crossword Game");
 
     //Code to transition
     gameWindow = new GameWindow(this);

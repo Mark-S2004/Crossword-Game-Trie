@@ -6,6 +6,7 @@ WinWindow::WinWindow(QWidget *parent)
     , ui(new Ui::WinWindow)
 {
     ui->setupUi(this);
+    setWindowTitle("Crossword Game");
 }
 
 WinWindow::~WinWindow()

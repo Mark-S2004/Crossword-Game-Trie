@@ -6,6 +6,7 @@ LoseWindow::LoseWindow(QWidget *parent)
     , ui(new Ui::LoseWindow)
 {
     ui->setupUi(this);
+    setWindowTitle("Crossword Game");
 }
 
 LoseWindow::~LoseWindow()

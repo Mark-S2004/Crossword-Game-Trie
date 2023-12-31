@@ -13,6 +13,7 @@ GameWindow::GameWindow(QWidget *parent) :
     ui(new Ui::GameWindow)
 {
     ui->setupUi(this);
+    setWindowTitle("Crossword Game");
     //Timer
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &GameWindow::updateTimer);
