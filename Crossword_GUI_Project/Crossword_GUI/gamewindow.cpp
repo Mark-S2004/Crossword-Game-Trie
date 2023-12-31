@@ -143,6 +143,8 @@ void GameWindow::on_submitBtn_clicked()
     bool result = true;
     for (int i = 0; i < static_cast<int>(t1.crosswordBoard.size()); ++i)
     {
+        QString horizontalWord = "";
+        QString verticalWord = "";
         for (int j = 0; j < static_cast<int>(t1.crosswordBoard.size()); ++j)
         {
             if (t1.crosswordBoard[i][j].first != '_') {
@@ -150,13 +152,31 @@ void GameWindow::on_submitBtn_clicked()
                 QLineEdit *lineEdit = findChild<QLineEdit *>(objectName);
                 if (lineEdit) {
                     QString value = lineEdit->text();
+                    value = value.toLower();
+                    horizontalWord += value;
                     if (value != t1.crosswordBoard[i][j].first) {
                         result = false;
-                        break;
                     }
                 }
             }
+            if (t1.crosswordBoard[j][i].first != '_') {
+                QString objectName = QString("lineEdit_%1_%2").arg(j).arg(i);
+                QLineEdit *lineEdit = findChild<QLineEdit *>(objectName);
+                if (lineEdit) {
+                    QString value = lineEdit->text();
+                    value = value.toLower();
+                    verticalWord += value;
+                    if (value != t1.crosswordBoard[j][i].first) {
+                        result = false;
+                    }
+                }
+                if (t1.search(verticalWord.toStdString()))
+                    ++correctWords;
+            }
         }
+        cout << endl;
+        if (t1.search(horizontalWord.toStdString()))
+            ++correctWords;
         cout << endl;
     }
 
