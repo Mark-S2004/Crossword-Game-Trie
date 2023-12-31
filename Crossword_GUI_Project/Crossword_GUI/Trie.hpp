@@ -63,6 +63,8 @@ private:
 public:
     vector<vector<pair<char, int>>> crosswordBoard;
 
+    int size;
+
     Trie();
 
     ~Trie();

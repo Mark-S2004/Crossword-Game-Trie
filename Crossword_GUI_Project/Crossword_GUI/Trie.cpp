@@ -1,6 +1,6 @@
 #include "trie.hpp"
 
-Trie::Trie()
+Trie::Trie():size(0)
 {
     root = new Node();
 }
@@ -73,6 +73,7 @@ void Trie::insert(const string word)
         current = current->children[i];
     }
     current->isEndofWord = true;
+    ++size;
 }
 
 void Trie::insertIndex(const string word,const int indx)
@@ -89,6 +90,7 @@ void Trie::insertIndex(const string word,const int indx)
     }
     current->isEndofWord = true;
     current->index = indx;
+    ++size;
 }
 
 bool Trie::search(const string word)
@@ -151,6 +153,8 @@ void Trie::deleteWord(string word)
         ptr->isEndofWord = false;
     else
         deleteAllNodes(lastPrefixNode, lastPrefixCharIndex, ptr, word);
+
+    --size;
 }
 
 void Trie::displayReq(ostream &out) const

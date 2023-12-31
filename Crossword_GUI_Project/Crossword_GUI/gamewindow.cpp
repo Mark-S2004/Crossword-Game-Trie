@@ -138,6 +138,7 @@ void GameWindow::on_submitBtn_clicked()
 
     int elapsedSeconds = elapsedTimer.elapsed() / 1000; // Calculate elapsed time in seconds
     qDebug()<< elapsedSeconds;
+    int correctWords = 0;
 
     bool result = true;
     for (int i = 0; i < static_cast<int>(t1.crosswordBoard.size()); ++i)
@@ -169,6 +170,7 @@ void GameWindow::on_submitBtn_clicked()
         qDebug()<<"You have Lost, better luck next time";
         LoseWindow *loseWindow = new LoseWindow(this); // Create an instance of WinWindow
         loseWindow->updateTime(timeStr);
+        loseWindow->updateCorrectNumber(correctWords, t1.size);
         loseWindow->show(); // Show the WinWindow
         hide();
     }

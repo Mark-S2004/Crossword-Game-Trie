@@ -2,6 +2,7 @@
 #define LOSEWINDOW_H
 
 #include <QMainWindow>
+#include <QLabel>
 
 namespace Ui {
 class LoseWindow;
@@ -20,6 +21,7 @@ private slots:
 
 public slots:
     void updateTime(const QString &timeValue);
+    void updateCorrectNumber(const int &correctNumber, const int &trieSize);
 private:
     Ui::LoseWindow *ui;
 };
