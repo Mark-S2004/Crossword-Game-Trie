@@ -1,0 +1,10 @@
+release/Trie.o
+release/gamewindow.o
+release/losewindow.o
+release/main.o
+release/mainwindow.o
+release/winwindow.o
+release/moc_gamewindow.o
+release/moc_losewindow.o
+release/moc_mainwindow.o
+release/moc_winwindow.o
