@@ -7,6 +7,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    QString executable_path = QCoreApplication::applicationDirPath();
+    QIcon icon(executable_path + "/icon.png");
+    setWindowIcon(icon);
+
     //Code to transition
     gameWindow = new GameWindow(this);
     // Connect the button's clicked signal to the slot function
