@@ -3,6 +3,7 @@
 #include "ui_gamewindow.h"
 #include <QFile>
 #include <QTextStream>
+#include <QCoreApplication>
 #include <QLineEdit>
 #include "winwindow.h"
 #include "losewindow.h"
@@ -23,7 +24,9 @@ GameWindow::GameWindow(QWidget *parent) :
     elapsedTimer.start();
 
     //Riddles Import
-    QFile riddlesFile("E:\\ASU\\Semester 5\\Data Structure\\Crosswords-Game-Trie\\Crossword_GUI_Project\\Crossword_GUI\\riddles.txt");
+    QString executable_path = QCoreApplication::applicationDirPath();
+    QFile riddlesFile(executable_path + "/riddles.txt");
+    cout << riddlesFile.exists() << endl;
     if (riddlesFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         QTextStream in(&riddlesFile);
@@ -54,7 +57,7 @@ GameWindow::GameWindow(QWidget *parent) :
 
 
     //Words Import
-    QFile wordsFile("E:\\ASU\\Semester 5\\Data Structure\\Crosswords-Game-Trie\\Crossword_GUI_Project\\Crossword_GUI\\words.txt");
+    QFile wordsFile(executable_path + "/words.txt");
     if (wordsFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         QTextStream in1(&wordsFile);
